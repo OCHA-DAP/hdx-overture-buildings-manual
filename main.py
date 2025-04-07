@@ -42,7 +42,15 @@ def duckdb_split(dataset_path: Path, category: str, boundary_path: Path) -> None
 
 
 def main() -> None:
-    """Splits building footprint dataset by Admin 1."""
+    """Splits building footprint dataset by Admin 1.
+
+    Requires 2 types of inputs to work:
+    1. building footprints: inputs/buildings/overture.parquet
+    2. admin boundaries: inputs/boundaries/*.parquet
+
+    To download overture building footprints:
+        overturemaps download --bbox=... -f geoparquet --type=buildings -o output.parquet
+    """
     for boundary_file in sorted((input_path / "boundaries").glob("*.parquet")):
         duckdb_split(
             input_path / "buildings/overture.parquet",
