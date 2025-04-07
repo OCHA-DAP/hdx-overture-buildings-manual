@@ -1,0 +1,6 @@
+__pycache__
+.env
+.ruff_cache
+.venv
+*.parquet
+*.zip
